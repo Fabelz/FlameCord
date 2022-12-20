@@ -1,0 +1,22 @@
+From ac78cff627cbb1f0cb287465a27ebf38accce8c2 Mon Sep 17 00:00:00 2001
+From: Fabelz <fabelzdev@gmail.com>
+Date: Tue, 20 Dec 2022 20:44:07 +1100
+Subject: [PATCH] Fix for player info removal packets disconnecting players on
+ server switching.
+
+
+diff --git a/proxy/src/main/java/net/md_5/bungee/tab/ServerUnique.java b/proxy/src/main/java/net/md_5/bungee/tab/ServerUnique.java
+index 118c78f4..df6a4b12 100644
+--- a/proxy/src/main/java/net/md_5/bungee/tab/ServerUnique.java
++++ b/proxy/src/main/java/net/md_5/bungee/tab/ServerUnique.java
+@@ -105,6 +105,7 @@ public class ServerUnique extends TabList
+                 PlayerListItem.Item item = items[i++] = new PlayerListItem.Item();
+                 item.setUsername( username );
+                 item.setDisplayName( username );
++                item.setPing( 0 );
+             }
+             // FlameCord end - 1.7.x support
+ 
+-- 
+2.35.0.windows.1
+
